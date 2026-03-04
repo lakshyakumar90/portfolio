@@ -1,0 +1,18 @@
+import type { MetadataRoute } from "next"
+
+import { SITE_INFO } from "@/config/site"
+import { getBlogDocs } from "@/features/doc/data/documents"
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const posts = getBlogDocs().map((post) => ({
+    url: `${SITE_INFO.url}/blog/${post.slug}`,
+    lastModified: new Date(post.metadata.updatedAt).toISOString(),
+  }))
+
+  const routes = ["", "/blog", "/projects", "/rss", "/llms.txt", "/llms-full.txt"].map((route) => ({
+    url: `${SITE_INFO.url}${route}`,
+    lastModified: new Date().toISOString(),
+  }))
+
+  return [...routes, ...posts]
+}
