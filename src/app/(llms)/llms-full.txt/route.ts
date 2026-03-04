@@ -3,7 +3,6 @@ import { format } from "date-fns"
 import { SITE_INFO } from "@/config/site"
 import { getBlogDocs } from "@/features/doc/data/documents"
 import { getLLMText } from "@/features/doc/lib/get-llm-text"
-import { AWARDS } from "@/features/portfolio/data/awards"
 import { CERTIFICATIONS } from "@/features/portfolio/data/certifications"
 import { EXPERIENCES } from "@/features/portfolio/data/experiences"
 import { getProjectSlug, PROJECTS } from "@/features/portfolio/data/projects"
@@ -58,7 +57,6 @@ ${PROJECTS.map((item) => {
 
 const awardsText = `## Awards
 
-${AWARDS.map((item) => `### ${item.prize} | ${item.title}\n\n${item.description}`).join("\n\n")}
 `
 
 const certificationsText = `## Certifications
